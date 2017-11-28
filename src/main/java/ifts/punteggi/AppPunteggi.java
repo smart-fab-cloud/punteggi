@@ -11,10 +11,15 @@ public class AppPunteggi extends Application<PunteggiConfig> {
     
     @Override
     public void run(PunteggiConfig configuration, Environment environment) {
+        // Registra il servizio "Punteggi"
         final Punteggi risorsaPunteggi = new Punteggi(
                 configuration.getPunteggioIniziale()
         );
         environment.jersey().register(risorsaPunteggi);
+        
+        // Registra il servizio "Utenti"
+        final Utenti risorsaUtenti = new Utenti();
+        environment.jersey().register(risorsaUtenti);
     }
 }
 
